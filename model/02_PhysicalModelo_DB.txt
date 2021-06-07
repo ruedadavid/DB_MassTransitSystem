@@ -1,0 +1,16 @@
+--
+--Create tables
+--
+CREATE TABLE station   (id serial, name varchar  , address varchar                          , created_by varchar(20) NOT NULL DEFAULT current_user, created_at date DEFAULT current_timestamp, updated_by varchar(20), updated_at date);
+CREATE TABLE passenger (id serial, name varchar  , address varchar  , d_birthday date       , created_by varchar(20) NOT NULL DEFAULT current_user, created_at date DEFAULT current_timestamp, updated_by varchar(20), updated_at date);
+CREATE TABLE train     (id serial, model varchar , capacity int                             , created_by varchar(20) NOT NULL DEFAULT current_user, created_at date DEFAULT current_timestamp, updated_by varchar(20), updated_at date);
+CREATE TABLE trip      (id serial, id_track int  , id_passenger int , d_start date          , created_by varchar(20) NOT NULL DEFAULT current_user, created_at date DEFAULT current_timestamp, updated_by varchar(20), updated_at date);
+CREATE TABLE track     (id serial, id_station int, id_train int     , name varchar          , created_by varchar(20) NOT NULL DEFAULT current_user, created_at date DEFAULT current_timestamp, updated_by varchar(20), updated_at date);
+--
+-- Create Primary keys
+--
+ALTER TABLE station ADD CONSTRAINT station_pk PRIMARY KEY (id);
+ALTER TABLE passenger ADD CONSTRAINT passenger_pk PRIMARY KEY (id);
+ALTER TABLE train ADD CONSTRAINT train_pk PRIMARY KEY (id);
+ALTER TABLE trip ADD CONSTRAINT trip_pk PRIMARY KEY (id);
+ALTER TABLE track ADD CONSTRAINT track_pk PRIMARY KEY (id);
