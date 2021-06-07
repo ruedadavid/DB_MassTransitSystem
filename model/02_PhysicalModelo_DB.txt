@@ -91,5 +91,27 @@ ALTER TABLE track
     FOREIGN KEY (id_train)
     REFERENCES train(id) ON UPDATE CASCADE ON DELETE CASCADE;
 --
+-- Create new user with specific permits in a table.
 --
+CREATE USER usuario_consulta WITH LOGIN PASSWORD '123';
+-- Grant permisions to usuario_consulta (only INSERT, UPDATE, DELETE and SELECT data in tables)
+--
+GRANT INSERT, SELECT, UPDATE, DELETE ON TABLE train TO usuario_consulta;
+GRANT USAGE, SELECT ON SEQUENCE train_id_seq TO usuario_consulta;
+--
+GRANT INSERT, SELECT, UPDATE, DELETE ON TABLE station TO usuario_consulta;
+GRANT USAGE, SELECT ON SEQUENCE station_id_seq TO usuario_consulta;
+--
+-- Grant permisions to usuario_consulta (only INSERT, UPDATE, DELETE and SELECT data in tables)
+--
+GRANT INSERT, SELECT, UPDATE, DELETE ON TABLE passenger TO usuario_consulta;
+GRANT USAGE, SELECT ON SEQUENCE passenger_id_seq TO usuario_consulta;
+--
+GRANT INSERT, SELECT, UPDATE, DELETE ON TABLE track TO usuario_consulta;
+GRANT USAGE, SELECT ON SEQUENCE track_id_seq TO usuario_consulta;
+--
+-- Grant permisions to usuario_consulta (only INSERT, UPDATE, DELETE and SELECT data in tables)
+--
+GRANT INSERT, SELECT, UPDATE, DELETE ON TABLE trip TO usuario_consulta;
+GRANT USAGE, SELECT ON SEQUENCE trip_id_seq TO usuario_consulta;
 --
